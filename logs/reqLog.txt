@@ -206,3 +206,8 @@
 20241201	21:04:13	fb34dffe-c3e7-4918-959e-f3dc85b5fbaf	POST	undefined	/auth
 20241201	21:04:25	0acdc659-c0eb-4a46-ab32-9837672cbdf4	POST	undefined	/employees
 20241201	21:04:30	049656d4-dc8c-4680-ad7e-6f0848719d43	DELETE	undefined	/employees
+20241201	23:28:29	5d8a57e5-20d5-41df-a5db-2723a6ce3dec	GET	undefined	/test
+20241201	23:30:34	8590700d-7760-47ff-b9ee-a5a26a36e149	GET	undefined	/
+20241201	23:30:34	e083ba77-b175-4248-8835-fbbadd0431c1	GET	undefined	/css/style.css
+20241201	23:30:37	28b70399-1255-4ce6-beca-250a2b2f3ea3	GET	undefined	/test
+20241201	23:33:01	2833cbff-ade9-4336-9801-d24b6b712397	GET	undefined	/test

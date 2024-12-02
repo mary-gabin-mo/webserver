@@ -15,14 +15,6 @@ const mysql = require("mysql2");
 
 const PORT = process.env.PORT || 3500;
 
-// Connect to MySQL
-const db = mysql.createConnection({
-  host: process.env.MYSQL_ADDON_HOST,
-  user: process.env.MYSQL_ADDON_USER,
-  password: process.env.MYSQL_ADDON_PASSWORD,
-  database: process.env.MYSQL_ADDON_DB,
-  port: process.env.MYSQL_ADDON_PORT,
-});
 // custome middleware - custome logger
 app.use(logger);
 
@@ -50,6 +42,7 @@ app.use("/", require("./routes/root"));
 app.use("/subdir", require("./routes/subdir"));
 app.use("/register", require("./routes/register"));
 app.use("/auth", require("./routes/auth"));
+app.use("/test", require("./routes/test"));
 app.use("/refresh", require("./routes/refresh"));
 app.use("/logout", require("./routes/logout"));
 
@@ -103,9 +96,9 @@ app.all("*", (req, res) => {
 // error handling middleware
 app.use(errorHandler);
 
-db.connect((err) => {
-  if (err) throw err;
-  console.log("Connected to the database!");
-  // listen at the end of the js file
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-});
+// db.connect((err) => {
+//   if (err) throw err;
+//   console.log("Connected to the database!");
+//   // listen at the end of the js file
+// });
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
