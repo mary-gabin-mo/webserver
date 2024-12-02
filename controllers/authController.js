@@ -32,7 +32,7 @@ const handleLogin = async (req, res) => {
         },
       }, // do not include pwd herer
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "30s" }
+      { expiresIn: "5m" }
     );
     // REFRESH TOKEN
     const refreshToken = jwt.sign(
