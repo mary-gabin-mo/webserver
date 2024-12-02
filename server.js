@@ -38,6 +38,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "/public")));
 app.use("/subdir", express.static(path.join(__dirname, "/public")));
 
+// Routes
 app.use("/", require("./routes/root"));
 app.use("/subdir", require("./routes/subdir"));
 app.use("/register", require("./routes/register"));

@@ -7,8 +7,8 @@ const usersDB = {
 const bcrypt = require("bcrypt");
 
 const jwt = require("jsonwebtoken");
-const fsPromises = require("fs").promises;
-const path = require("path");
+const fsPromises = require("fs").promises; // remove once db is connected
+const path = require("path"); // remove once db is connected
 
 const handleLogin = async (req, res) => {
   const { user, pwd } = req.body;
