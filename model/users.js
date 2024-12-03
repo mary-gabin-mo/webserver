@@ -47,4 +47,8 @@ module.exports = class User {
     );
     return;
   }
+
+  static async find(email) {
+    return db.execute("SELECT * FROM User WHERE email = ?", [email]);
+  }
 };

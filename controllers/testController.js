@@ -32,5 +32,52 @@ const register = async (req, res) => {
   }
 };
 
-const login = async (req, res) => {};
+const login = async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password)
+    return res
+      .status(400)
+      .json({ message: "Username and password are required." });
+  try {
+    const [[foundUser]] = await User.find(email);
+    // console.log(foundUser);
+    // console.log(foundUser["password"]);
+    if (!foundUser) return res.sendStatus(401); // Unauthorized
+    // evaluate password
+    const match = await bcrypt.compare(password, foundUser["password"]);
+    if (match) {
+      //   console.log("Match");
+      // ACCESS TOKEN
+      const accessToken = jwt.sign(
+        {
+          user_ID: foundUser["user_ID"],
+          user_type: foundUser["user_type"],
+        },
+        process.env.ACCESS_TOKEN_SECRET,
+        { expiresIn: "5m" }
+      );
+      // REFRESH TOKEN
+      const refreshToken = jwt.sign(
+        { user_ID: foundUser["user_ID"] },
+        process.env.REFRESH_TOKEN_SECRET,
+        { expiresIn: "1d" } // lasts much longer than accees token
+      );
+
+      res.cookie("jwt", refreshToken, {
+        httpOnly: true,
+        sameSite: "None",
+        secure: true,
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
+      });
+      res.json({ accessToken });
+    } else {
+      res.sendStatus(401);
+    }
+    // return;
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: err.message });
+  }
+};
+
 module.exports = { getAllUsers, register, login };
