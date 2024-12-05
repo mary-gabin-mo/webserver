@@ -1,3 +1,7 @@
 20241201	13:23:35	e955db77-9f6f-45c0-a0a0-161f0d21897c	Error: Not allowed by CORS
 20241201	18:50:03	76e67509-e40f-466b-b57d-8db7c284d3f1	SyntaxError: Expected ',' or '}' after property value in JSON at position 57
 20241202	03:47:29	dc3bc8b2-81d4-47f0-895f-4d472dca1d5e	SyntaxError: Expected double-quoted property name in JSON at position 45
+20241202	17:36:51	1288fbcf-a69c-4a85-89d8-3d459975ebfb	TypeError: res.headers is not a function
+20241202	17:38:47	cee12815-ddab-4730-bdd8-1e9a87d9a8ae	TypeError: res.headers is not a function
+20241202	17:41:53	bc1508db-f16f-4510-be8e-b6699ecfafb3	TypeError: res.headers is not a function
+20241202	17:49:53	51536fac-7b66-45c7-919b-7f7b4d312c7a	TypeError: res.headers is not a function

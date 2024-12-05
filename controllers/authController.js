@@ -11,11 +11,11 @@ const fsPromises = require("fs").promises; // remove once db is connected
 const path = require("path"); // remove once db is connected
 
 const handleLogin = async (req, res) => {
-  const { user, pwd } = req.body;
-  if (!user || !pwd)
+  const { email, pwd } = req.body;
+  if (!email || !pwd)
     return res
       .status(400)
-      .json({ message: "Username and password are required." });
+      .json({ message: "Email and password are required." });
   const foundUser = usersDB.users.find((person) => person.username === user);
   if (!foundUser) return res.sendStatus(401); // Unauthorized
   // evaluate password

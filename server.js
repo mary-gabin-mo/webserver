@@ -21,8 +21,8 @@ app.use(logger);
 // Handle options credentials check - before CORS!
 app.use(credentials);
 
-// app.use(cors(corsOptions)); // production
-app.use(cors()); // devel
+app.use(cors(corsOptions)); // production
+// app.use(cors()); // devel
 
 // built-in middleware to handle relencoded data i.e. form data:
 // 'content-type: application/x-www-form-urlencoded;
