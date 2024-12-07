@@ -3,14 +3,19 @@ const db = require("../config/dbConn");
 module.exports = class User {
   constructor() {}
 
-  static fetchAll() {
-    return db.execute("SELECT * FROM User");
+  static async fetchAll() {
+    return await db.execute("SELECT * FROM User");
   }
 
   ///// check for duplicate usernames in the db /////
-  static duplicate(email) {
-    return db.execute("SELECT email FROM User WHERE email = ?", [email]);
+
+  static async find(email) {
+    return db.execute("SELECT * FROM User WHERE email = ?", [email]);
   }
+
+  // static checkEmail(email) {
+  //   return db.execute("SELECT * FROM User WHERE email = ?", [email]);
+  // }
 
   static async add(name, email, hashedPwd, user_type, yos, major) {
     // Store new user
@@ -46,9 +51,5 @@ module.exports = class User {
       [student_id, null, yos, major, status_id, null]
     );
     return;
-  }
-
-  static async find(email) {
-    return db.execute("SELECT * FROM User WHERE email = ?", [email]);
   }
 };
