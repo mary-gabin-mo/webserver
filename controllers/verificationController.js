@@ -6,8 +6,10 @@ const getUnverifiedRequests = async (req, res) => {
     // retrieve all unverified requests
     const [unverifiedRequests] = await Verification.fetchAllUnverified();
     if (!unverifiedRequests)
-      return res.status(400).json({ message: "Unverified Requests Not Found" });
-    console.log(unverifiedRequests);
+      return res.status(204).json({
+        message: "Unverified Requests Not Found - verificationController",
+      });
+    console.log(unverifiedRequests); // devel
     res.json(unverifiedRequests);
   } catch (error) {
     console.log(error);

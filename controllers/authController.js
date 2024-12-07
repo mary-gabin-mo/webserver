@@ -18,7 +18,7 @@ const handleLogin = async (req, res) => {
     // if !foundUser, throw User Not Found error
     if (!foundUser) return res.status(400).json({ message: "Email Not Found" });
 
-    console.log(foundUser.user_ID); // devel
+    console.log(`authController: ${foundUser.user_ID}`); // devel
     // check password match
     // const { email, password } = foundUser;
     const match = await bcrypt.compare(pwd, foundUser.password);
@@ -29,13 +29,13 @@ const handleLogin = async (req, res) => {
       const accessToken = jwt.sign(
         {
           UserInfo: {
-            // id: foundUser.user_ID,
+            id: foundUser.user_ID,
             email: foundUser.email,
             role: foundUser.user_type,
           },
         }, // do not include pwd here
         process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: "1m" }
+        { expiresIn: "15s" }
       );
       // create refreshToken
       const refreshToken = jwt.sign(
@@ -47,7 +47,7 @@ const handleLogin = async (req, res) => {
           },
         }, // do not include pwd herer
         process.env.REFRESH_TOKEN_SECRET,
-        { expiresIn: "1d" } // refresh token expires much later than the access token
+        { expiresIn: "15s" } // refresh token expires much later than the access token
       );
 
       // send back the accessToken and refreshToken
@@ -58,11 +58,13 @@ const handleLogin = async (req, res) => {
         maxAge: 24 * 60 * 60 * 1000,
       }); // time in milliseconds; equal to one day
       res.json({
-        user_ID: foundUser.user_ID,
+        id: foundUser.user_ID,
+        email: foundUser.email,
         role: foundUser.user_type,
         accessToken,
       });
     } else {
+      console.log(`authController error`);
       res.sendStatus(401);
     }
   } catch (err) {
