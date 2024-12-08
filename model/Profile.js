@@ -4,7 +4,7 @@ const profileQuery = `INSERT INTO Profile (user_ID, description) VALUES (?, ?)`;
 
 const preferenceQuery = `INSERT INTO Preference (profile_ID, user_ID) VALUES (?, ?)`;
 
-const rentQuery = `INSERT INTO RentRange (preference_ID, range) VALUES (?, ?)`;
+const rentQuery = "INSERT INTO RentRange (preference_ID, `range`) VALUES (?,?)";
 
 const cleanQuery =
   "INSERT INTO Cleanliness (preference_ID, clean_level) VALUES (?,?)";
@@ -53,16 +53,16 @@ module.exports = class Profile {
       // console.log(preference_ID); // devel
 
       //   console.log("rentRange type", typeof rentRange);
-      //   rentRange = parseInt(rentRange, 10);
+      const range = parseInt(rentRange, 10);
       //   console.log("new rentRange type", typeof rentRange);
 
-      db.execute(rentQuery, [preference_ID, rentRange]);
-      db.execute(cleanQuery, [preference_ID, cleanliness]);
-      db.execute(roomQuery, [preference_ID, roomCapacity]);
-      db.execute(locationQuery, [preference_ID, location]);
-      db.execute(noiseQuery, [preference_ID, noiseTolerance]);
-      db.execute(socialQuery, [preference_ID, socialHabits]);
-      db.execute(sleepQuery, [preference_ID, sleepSchedule]);
+      await db.execute(cleanQuery, [preference_ID, cleanliness]);
+      await db.execute(roomQuery, [preference_ID, roomCapacity]);
+      await db.execute(locationQuery, [preference_ID, location]);
+      await db.execute(noiseQuery, [preference_ID, noiseTolerance]);
+      await db.execute(socialQuery, [preference_ID, socialHabits]);
+      await db.execute(sleepQuery, [preference_ID, sleepSchedule]);
+      await db.execute(rentQuery, [preference_ID, rentRange]);
     } catch (error) {
       console.log(error);
     }
