@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const verificationController = require("../controllers/verificationController");
-const verifyRoles = require("../middleware/verifyRoles");
+const verificationController = require("../../controllers/verificationController");
+const verifyRoles = require("../../middleware/verifyRoles");
 
 router
   .route("/")

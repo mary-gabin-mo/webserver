@@ -49,7 +49,8 @@ app.use("/logout", require("./routes/logout"));
 
 app.use(verifyJWT);
 app.use("/employees", require("./routes/api/employees"));
-app.use("/verify", require("./routes/verification"));
+app.use("/verify", require("./routes/api/verification"));
+app.use("/profile", require("./routes/api/profile"));
 
 // // Route handlers
 // // (chained functions)

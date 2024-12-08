@@ -28,13 +28,13 @@ const handleRefreshToken = async (req, res) => {
             .status(403)
             .json({ message: "refreshTokenController erro" });
         // const roles = Object.values(foundUser.roles);
-        const id = decoded.UserInfo.id;
+        const user_ID = decoded.UserInfo.user_ID;
         const email = decoded.UserInfo.email;
         const role = decoded.UserInfo.role;
         const accessToken = jwt.sign(
           {
             UserInfo: {
-              id,
+              user_ID,
               email,
               role,
             },
@@ -42,7 +42,7 @@ const handleRefreshToken = async (req, res) => {
           process.env.ACCESS_TOKEN_SECRET,
           { expiresIn: "15m" }
         );
-        res.json({ id, email, role, accessToken });
+        res.json({ user_ID, email, role, accessToken });
       }
     );
   } catch (err) {

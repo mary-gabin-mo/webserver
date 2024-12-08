@@ -5,3 +5,7 @@
 20241202	17:38:47	cee12815-ddab-4730-bdd8-1e9a87d9a8ae	TypeError: res.headers is not a function
 20241202	17:41:53	bc1508db-f16f-4510-be8e-b6699ecfafb3	TypeError: res.headers is not a function
 20241202	17:49:53	51536fac-7b66-45c7-919b-7f7b4d312c7a	TypeError: res.headers is not a function
+20241207	18:03:59	34292c15-711e-4023-9e7a-3e5a4f00ff76	TypeError: Cannot read properties of undefined (reading 'id')
+20241207	18:05:37	3947443b-f7fc-47f9-b653-0f4d49f0606f	TypeError: Cannot read properties of undefined (reading 'user_ID')
+20241207	18:08:53	46248999-f719-4eeb-83af-33845695363a	TypeError: Cannot read properties of undefined (reading 'user_ID')
+20241207	18:12:40	82d72728-278a-44eb-a2b5-1534dadcb3e3	TypeError: Cannot read properties of undefined (reading 'email')

@@ -1,5 +1,5 @@
 const Verification = require("../model/Verification");
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 
 const getUnverifiedRequests = async (req, res) => {
   try {
