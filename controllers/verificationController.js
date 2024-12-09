@@ -1,5 +1,4 @@
 const Verification = require("../model/Verification");
-// const jwt = require("jsonwebtoken");
 
 const getUnverifiedRequests = async (req, res) => {
   try {
@@ -42,11 +41,5 @@ const updateVerificationStatus = async (req, res) => {
     res.sendStatus(500);
   }
 };
-
-// const verifyRequests = async (req, res) => {};
-
-// const handleVerification = async (req, res) => {
-//   return <div></div>;
-// };
 
 module.exports = { getUnverifiedRequests, updateVerificationStatus };
