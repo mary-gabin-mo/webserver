@@ -5,9 +5,10 @@ const verifyRoles = require("../../middleware/verifyRoles");
 
 router
   .route("/")
-  .get(verifyRoles("ADMIN"), verificationController.getUnverifiedRequests);
+  .get(verifyRoles("ADMIN"), verificationController.getUnverifiedRequests)
+  .put(verifyRoles("ADMIN"), verificationController.updateVerificationStatus);
+// .put(verificationController.updateVerificationStatus); // devel
 // .get(verificationController.getUnverifiedRequests); // devel
-// .post(verifyRoles("ADMIN"), verificationController.verifyRequests);
 
 // router.route('/:id')
 // .get(verifyRoles("ADMIN"), verificationController.getRequest);

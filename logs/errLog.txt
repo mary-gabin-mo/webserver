@@ -9,3 +9,5 @@
 20241207	18:05:37	3947443b-f7fc-47f9-b653-0f4d49f0606f	TypeError: Cannot read properties of undefined (reading 'user_ID')
 20241207	18:08:53	46248999-f719-4eeb-83af-33845695363a	TypeError: Cannot read properties of undefined (reading 'user_ID')
 20241207	18:12:40	82d72728-278a-44eb-a2b5-1534dadcb3e3	TypeError: Cannot read properties of undefined (reading 'email')
+20241208	16:26:04	990d4458-87b7-4a08-a4a7-e674ac992eeb	TypeError: Cannot read properties of undefined (reading 'user_ID')
+20241208	16:31:06	43de1f64-a90c-465c-afc2-e0baed192564	TypeError: Cannot read properties of undefined (reading 'user_ID')

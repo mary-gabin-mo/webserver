@@ -48,42 +48,10 @@ app.use("/refresh", require("./routes/refresh"));
 app.use("/logout", require("./routes/logout"));
 
 app.use(verifyJWT);
-app.use("/employees", require("./routes/api/employees"));
 app.use("/verify", require("./routes/api/verification"));
+// app.use("/employees", require("./routes/api/employees")); // example
 app.use("/profile", require("./routes/api/profile"));
 
-// // Route handlers
-// // (chained functions)
-// app.get(
-//   "/hello(.html)?",
-//   (req, res, next) => {
-//     console.log("attempted to load hello.html");
-//     next();
-//   },
-//   (req, res) => {
-//     res.send("Hello World!");
-//   }
-// );
-
-// // chaining route handlers
-// const one = (req, res, next) => {
-//   console.log("one");
-//   next();
-// };
-
-// const two = (req, res, next) => {
-//   console.log("two");
-//   next();
-// };
-
-// const three = (req, res) => {
-//   console.log("three");
-//   res.send("Finished!");
-// };
-
-// app.get("/chain(.html)?", [one, two, three]);
-
-// default page = 404
 // app.use('/'); app.use more likely to be used by middleware; does not take regex
 app.all("*", (req, res) => {
   res.status(404);
