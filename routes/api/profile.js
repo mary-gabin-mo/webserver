@@ -5,11 +5,7 @@ const verifyRoles = require("../../middleware/verifyRoles");
 
 router
   .route("/")
-  .post(verifyRoles("STUDENT"), profileController.createNewProfile);
-// .get(verifyRoles("ADMIN"), verificationController.getUnverifiedRequests);
-// .get(verificationController.getUnverifiedRequests); // devel
-
-// router.route('/:id')
-// .get(verifyRoles("ADMIN"), verificationController.getRequest);
+  .post(verifyRoles("STUDENT"), profileController.createNewProfile)
+  .get(verifyRoles("STUDENT"), profileController.getProfiles);
 
 module.exports = router;

@@ -62,46 +62,4 @@ module.exports = class Verification {
 
     return true;
   }
-
-  static async updateStatus(admin_ID, student_ID, status_name) {
-    // update the status of the verification
-
-    const [[status_ID]] = await db.execute(
-      `SELECT status_ID FROM Verification WHERE student_ID = ?`,
-      [student_ID]
-    );
-    console.log(status_ID);
-    var datetime = new Date();
-    const datetime_str = datetime.toISOString().slice(0, 10);
-
-    await db.execute(
-      `
-      UPDATE Status 
-      SET status_name = ?, last_updated = ?
-      WHERE status_ID = ?;
-      `,
-      [status_name, datetime_str, status_ID]
-    );
-
-    // if accepted, add to Accepted table
-    status_name === "Accepted"
-      ? await db.execute(
-          `
-      INSERT INTO Accepted (status_id, accepted_by)
-      VALUES (?,?);
-      `,
-          [status_ID, admin_ID]
-        )
-      : await db.execute(
-          `
-      INSERT INTO Declined (status_id, accepted_by)
-      VALUES (?,?);
-      `,
-          [status_ID, admin_ID]
-        );
-
-    console.log("Verification status updated successfully"); // devel
-
-    return true;
-  }
 };

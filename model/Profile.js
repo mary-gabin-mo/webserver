@@ -1,5 +1,19 @@
 const db = require("../config/dbConn");
 
+const getQuery = `SELECT U.user_ID, U.name, U.email, P.profile_ID, P.description, RR.range, CL.clean_level, RC.room_amount, LC.quadrant, NT.tolerance_level, SH.habits
+FROM User AS U
+JOIN Profile AS P on U.User_ID = P.user_ID
+JOIN Preference AS Pref ON Pref.profile_ID = P.profile_ID
+NATURAL JOIN RentRange AS RR
+NATURAL JOIN Cleanliness AS CL
+NATURAL JOIN RoomCapacity AS RC
+NATURAL JOIN Location AS LC
+NATURAL JOIN NoiseTolerance AS NT
+NATURAL JOIN SocialHabits AS SH
+NATURAL JOIN SleepSchedule AS SS
+WHERE U.user_type = "STUDENT";
+`;
+
 const profileQuery = `INSERT INTO Profile (user_ID, description) VALUES (?, ?)`;
 
 const preferenceQuery = `INSERT INTO Preference (profile_ID, user_ID) VALUES (?, ?)`;
@@ -26,6 +40,10 @@ const sleepQuery =
 
 module.exports = class Profile {
   constructor() {}
+
+  static async fetchAll() {
+    return await db.execute(getQuery, []);
+  }
 
   static async add(
     // profile_ID,
